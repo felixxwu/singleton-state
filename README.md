@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Singleton State
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A 1kB alternative to React Context with improved performance and ergonomics.
 
-Currently, two official plugins are available:
+## Define your state
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Every piece of state is a hook. Create state using `singletonState`.
 
-## Expanding the ESLint configuration
+```ts
+import { singletonState } from 'singletonstate'
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+export const useCount = singletonState(0)
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Use your state
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Just import and use the hook in your components, no providers needed.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```ts
+function Display() {
+  const [count] = useCount()
+  return <h1>{count}</h1>
+}
+
+function Increment() {
+  const [count, setCount] = useCount()
+  return <button onClick={() => setCount(count + 1)}>Increment</button>
+}
 ```
+
+## Performance benefits?
+
+React Context causes all consumers of the context to re-render every time the value changes. Commonly there will be multiple values in the same context like so:
+
+```ts
+export const Context = createContext<{
+  count: number
+  setCount: Dispatch<SetStateAction<number>>
+  someOtherState: string
+}>(null!)
+```
+
+This will mean that any subscribers of `someOtherState` will get a re-render every time `count` changes.
+
+<img src="https://github.com/user-attachments/assets/4d9a49ba-bc99-43b4-a6bf-28c325d4dceb" width="300" />
+
