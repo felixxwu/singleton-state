@@ -8,14 +8,15 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "preview": "vite build && vite preview",
     "predeploy": "npm ci && npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "goober": "^2.1.16",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "vite-plugin-singlefile": "^2.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
