@@ -40,7 +40,7 @@ export const Context = createContext<{
 }>(null!)
 ```
 
-This will mean that any subscribers of `someOtherState` will get a re-render every time `count` changes.
+This will mean that any subscribers of `someOtherState` will get a re-render every time `count` changes, unless we wrap our app with a new provider for every piece of state.
 
 <img src="assets/context.gif" width="400" />
 
