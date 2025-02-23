@@ -22,7 +22,7 @@ jobs:
 
       # Step 3: Install dependencies
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       # Step 4: Build the React app
       - name: Build React App
