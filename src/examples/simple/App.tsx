@@ -20,6 +20,13 @@ export default function App() {
       {useReactContext ? <ContextApp /> : <SingletonApp />}
 
       <a href='/complexExample.html'>See complex example</a>
+
+      <span>
+        Learn more:{' '}
+        <a href='https://github.com/felixxwu/singleton-state'>
+          github.com/felixxwu/singleton-state
+        </a>
+      </span>
     </Div>
   )
 }

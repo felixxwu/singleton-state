@@ -1,3 +1,5 @@
+import { Codeblock } from './Codeblock.tsx'
+
 export function Header() {
   return (
     <>
@@ -9,6 +11,10 @@ export function Header() {
         </a>{' '}
         with improved performance and ergonomics.
       </span>
+      <p>
+        Install:
+        <Codeblock>npm install singleton-state-hook</Codeblock>
+      </p>
     </>
   )
 }
