@@ -16,16 +16,16 @@ export const Fieldset = ({ children }: { children: React.ReactNode }) => {
     }, 500)
   }
 
-  return <StyledFieldset aria-selected={recentlyRendered}>{children}</StyledFieldset>
+  return <StyledFieldset data-highlight={recentlyRendered}>{children}</StyledFieldset>
 }
 
-const StyledFieldset = styled('fieldset')<{ 'aria-selected': boolean }>`
+const StyledFieldset = styled('fieldset')<{ 'data-highlight': boolean }>`
   padding: 10px;
   text-align: center;
-  border-color: ${p => (p['aria-selected'] ? '#fff' : '#777')};
+  border-color: ${p => (p['data-highlight'] ? '#fff' : '#999')};
   border-radius: 5px;
 
   & > legend {
-    color: ${p => (p['aria-selected'] ? '#fff' : '#777')};
+    color: ${p => (p['data-highlight'] ? '#fff' : '#999')};
   }
 `

@@ -4,7 +4,7 @@ import { FormEventHandler } from 'react'
 export function Toggle({ onChange }: { onChange: FormEventHandler<HTMLInputElement> }) {
   return (
     <Switch>
-      <Input type='checkbox' onChange={onChange} />
+      <Input type='checkbox' onChange={onChange} aria-label='Toggle' />
       <Slider />
     </Switch>
   )

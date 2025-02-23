@@ -58,7 +58,7 @@ const Div = styled('div')`
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  padding-bottom: 50px;
 `
 
 const Groups = styled('div')`
