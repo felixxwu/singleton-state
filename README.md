@@ -48,4 +48,4 @@ With Singleton State, each piece of state will be separated into its own hook, s
 
 <img src="assets/singletonState.gif" width="400" />
 
-
+Play with an interactive demo here: https://singletonstate.web.app/
