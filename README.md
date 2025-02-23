@@ -42,5 +42,10 @@ export const Context = createContext<{
 
 This will mean that any subscribers of `someOtherState` will get a re-render every time `count` changes.
 
-<img src="https://github.com/user-attachments/assets/4d9a49ba-bc99-43b4-a6bf-28c325d4dceb" width="300" />
+<img src="assets/context.gif" width="400" />
+
+With Singleton State, each piece of state will be separated into its own hook, so there will be no unnecessary re-renders.
+
+<img src="assets/singletonState.gif" width="400" />
+
 
