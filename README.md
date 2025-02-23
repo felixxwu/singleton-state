@@ -2,12 +2,18 @@
 
 A 1kB alternative to React Context with improved performance and ergonomics.
 
+```
+npm install singleton-state-hook
+```
+
+Interactive demo: https://singletonstate.web.app/
+
 ## Define your state
 
 Every piece of state is a hook. Create state using `singletonState`.
 
 ```ts
-import { singletonState } from 'singletonstate' (WIP)
+import { singletonState } from 'singleton-state-hook'
 
 export const useCount = singletonState(0)
 ```
@@ -18,12 +24,12 @@ Just import and use the hook in your components, no providers needed.
 
 ```ts
 function Display() {
-  const [count] = useCount()
+  const [ count ] = useCount()
   return <h1>{count}</h1>
 }
 
 function Increment() {
-  const [count, setCount] = useCount()
+  const [ count, setCount ] = useCount()
   return <button onClick={() => setCount(count + 1)}>Increment</button>
 }
 ```
@@ -42,13 +48,11 @@ export const Context = createContext<{
 
 This will mean that any subscribers of `someOtherState` will get a re-render every time `count` changes, unless we wrap our app with a new provider for every piece of state.
 
-<img src="assets/context.gif" width="400" />
+<img src="https://raw.githubusercontent.com/felixxwu/singleton-state/refs/heads/main/assets/context.gif" width="400" />
 
 With Singleton State, each piece of state will be separated into its own hook, so there will be no unnecessary re-renders.
 
-<img src="assets/singletonState.gif" width="400" />
-
-Play with an interactive demo here: https://singletonstate.web.app/
+<img src="https://raw.githubusercontent.com/felixxwu/singleton-state/main/assets/singletonState.gif" width="400" />
 
 ## How does it work under the hood?
 
