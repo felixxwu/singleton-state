@@ -19,7 +19,7 @@ export default function App() {
 
       {useReactContext ? <ContextApp /> : <SingletonApp />}
 
-      <a href='/complexExample'>See complex example</a>
+      <a href='/complexExample.html'>See complex example</a>
     </Div>
   )
 }
