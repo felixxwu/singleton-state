@@ -49,3 +49,49 @@ With Singleton State, each piece of state will be separated into its own hook, s
 <img src="assets/singletonState.gif" width="400" />
 
 Play with an interactive demo here: https://singletonstate.web.app/
+
+## How does it work under the hood?
+
+The entire library is only about 30 lines long:
+
+```ts
+export function singletonState<T>(initialState: T) {
+  // keep a set of subscribers in this scope, each piece of state will have a separate set
+  const subscribers = new Set<(value: React.SetStateAction<T>) => void>()
+  let localValue = initialState
+
+  // return the hook
+  return () => {
+    const [value, setValue] = useState(localValue)
+
+    // on mount add the subscriber to the set
+    useEffect(() => {
+      subscribers.add(setValue)
+      return () => {
+        subscribers.delete(setValue)
+      }
+    }, [])
+
+    // when the value changes, update localValue and call setValue for all subscribers
+    const setValues = (newValue: React.SetStateAction<T>) => {
+      if (typeof newValue === 'function') {
+        localValue = (newValue as (value: T) => T)(localValue)
+      } else {
+        localValue = newValue
+      }
+
+      for (const subscriber of subscribers) {
+        subscriber(newValue)
+      }
+    }
+
+    return [value, setValues] as const
+  }
+}
+```
+
+- each instance of `singletonState` stores a list of subscribers (i.e. components that consume the hook)
+- each subscriber will be given their own `value` to react to using the standard React `useState` hook
+- whenever a subscriber uses `setValue`, all subscribers are kept in sync through the subscription list
+
+In effect, each consumer of the state has their own `useState` created by the hook. Then, outside of the standard React lifecycle, all states are being synced whenever the values changes.
