@@ -7,7 +7,7 @@ A 1kB alternative to React Context with improved performance and ergonomics.
 Every piece of state is a hook. Create state using `singletonState`.
 
 ```ts
-import { singletonState } from 'singletonstate'
+import { singletonState } from 'singletonstate' (WIP)
 
 export const useCount = singletonState(0)
 ```
