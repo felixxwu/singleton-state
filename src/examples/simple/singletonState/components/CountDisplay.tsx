@@ -1,16 +1,16 @@
-import { useCount } from '../../store.ts'
+import { Count } from '../../store.ts'
 import { Fieldset } from '../../../Fieldset.tsx'
 import { Codeblock } from '../../../Codeblock.tsx'
 
 export function CountDisplay() {
   console.log('Rendered: <CountDisplay />')
 
-  const [count] = useCount()
+  const count = Count.useState()
 
   return (
     <Fieldset>
       <legend>{'<CountDisplay />'}</legend>
-      <Codeblock>const [count] = useCount()</Codeblock>
+      <Codeblock>const count = Count.useState()</Codeblock>
       <p>Count: {count}</p>
     </Fieldset>
   )

@@ -4,6 +4,9 @@ import { CountDisplay } from './components/CountDisplay.tsx'
 import { Fieldset } from '../../Fieldset.tsx'
 import { AnotherComponent } from './components/AnotherComponent.tsx'
 import { Codeblock } from '../../Codeblock.tsx'
+import { DoubleCountDisplay } from './components/DoubleCountDisplay.tsx'
+import { Button } from '../../Button.tsx'
+import { resetAllStates } from 'singleton-state-hook'
 
 export default function SingletonStateExample() {
   console.log('Rendered: <App />')
@@ -13,9 +16,11 @@ export default function SingletonStateExample() {
       <Fieldset>
         <legend>store.ts</legend>
         <Codeblock>
-          export const useCount = singletonState(0)
+          export const Count = singletonState(0)
           <br />
-          export const useSomeOtherState = singletonState('')
+          export const SomeOtherState = singletonState('')
+          <br />
+          export const DoubleCount = computed(Count, count =&gt; count * 2)
         </Codeblock>
       </Fieldset>
       <Fieldset>
@@ -24,6 +29,8 @@ export default function SingletonStateExample() {
           <CountDisplay />
           <IncrementButton />
           <AnotherComponent />
+          <DoubleCountDisplay />
+          <Button onClick={() => resetAllStates()}>Reset store</Button>
         </Div>
       </Fieldset>
     </>

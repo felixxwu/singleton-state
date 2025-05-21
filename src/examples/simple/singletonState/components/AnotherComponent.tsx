@@ -1,16 +1,16 @@
 import { Fieldset } from '../../../Fieldset.tsx'
-import { useSomeOtherState } from '../../store.ts'
+import { SomeOtherState } from '../../store.ts'
 import { Codeblock } from '../../../Codeblock.tsx'
 
 export function AnotherComponent() {
   console.log('Rendered: <AnotherComponent />')
 
-  const [someOtherState] = useSomeOtherState()
+  const someOtherState = SomeOtherState.useState()
 
   return (
     <Fieldset>
       <legend>{'<AnotherComponent />'}</legend>
-      <Codeblock>const [someOtherState] = useSomeOtherState()</Codeblock>
+      <Codeblock>const someOtherState = SomeOtherState.useState()</Codeblock>
       <p>{someOtherState}</p>
     </Fieldset>
   )

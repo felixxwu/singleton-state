@@ -1,4 +1,5 @@
-import { singletonState } from 'singleton-state-hook'
+import { computed, singletonState } from 'singleton-state-hook'
 
-export const useCount = singletonState(0)
-export const useSomeOtherState = singletonState('Does not re-render when count changes')
+export const Count = singletonState(0)
+export const SomeOtherState = singletonState('Does not re-render when Count changes')
+export const DoubleCount = computed(Count, count => count * 2)

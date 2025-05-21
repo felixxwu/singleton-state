@@ -1,3 +1,4 @@
+import { styled } from 'goober'
 import { Codeblock } from './Codeblock.tsx'
 
 export function Header() {
@@ -11,10 +12,17 @@ export function Header() {
         </a>{' '}
         with improved performance and ergonomics.
       </span>
-      <p>
-        Install:
-        <Codeblock>npm install singleton-state-hook</Codeblock>
-      </p>
+      <P>
+        <Codeblock color='#000'>npm install singleton-state-hook</Codeblock>
+      </P>
     </>
   )
 }
+
+const P = styled('p')`
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  color: #333;
+  user-select: all;
+`
