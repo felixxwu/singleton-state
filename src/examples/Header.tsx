@@ -21,8 +21,8 @@ export function Header() {
 
 const P = styled('p')`
   background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 3px;
   color: #333;
   user-select: all;
 `

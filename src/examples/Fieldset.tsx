@@ -20,10 +20,12 @@ export const Fieldset = ({ children }: { children: React.ReactNode }) => {
 }
 
 const StyledFieldset = styled('fieldset')<{ 'data-highlight': boolean }>`
-  padding: 10px;
-  text-align: center;
+  padding: 10px 20px;
+  text-align: left;
   border-color: ${p => (p['data-highlight'] ? '#fff' : '#999')};
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
 
   & > legend {
     color: ${p => (p['data-highlight'] ? '#fff' : '#999')};

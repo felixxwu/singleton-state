@@ -12,12 +12,13 @@ export const Button = ({
 }
 
 const StyledButton = styled('button')`
-  padding: 5px 20px;
+  padding: 8px 20px;
   border: none;
-  border-radius: 5px;
+  background-color: #4fc1ff;
+  border-radius: 1000px;
   cursor: pointer;
 
   &:hover {
-    background-color: #bbb;
+    filter: brightness(1.5);
   }
 `
