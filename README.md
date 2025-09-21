@@ -41,7 +41,7 @@ function Increment() {
 If you want a piece of state to depend on another pieces of state, you can define one using `computed`. This computed state will only update if the dependency updates.
 
 ```ts
-export const DoubleCount = computed(Count, count => count * 2)
+export const DoubleCount = computed({ Count }, ({ Count }) => Count * 2)
 ```
 
 ## Direct access to the state value
